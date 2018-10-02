@@ -1,0 +1,54 @@
+# 'constr' And 'destr' Keywords Addition
+
+* [x] Proposed
+* [ ] Prototype: [Complete](https://github.com/PROTOTYPE_OWNER/roslyn/BRANCH_NAME)
+* [ ] Implementation: [In Progress](https://github.com/dotnet/roslyn/BRANCH_NAME)
+* [ ] Specification: [Not Started](pr/1)
+
+## Summary
+[summary]: #summary
+
+Taken from its roots from C++ and to some extent Java, C# has always needed the programmer to copy the class name for constructors and destructors. This add nothing to the readability of the code and add a burden when name changes. It is true that modern IDE reduce this burden to a minimum, but this is true of anything that the IDE help automatically write. The proposal is to introduce two keywords, constr and destr, that would replace the constructor and destructor name in their declaration.
+
+## Motivation
+[motivation]: #motivation
+
+C# right now evolves in ways where less code need to be written which results in more verbose code that express better the intent. Even though this has happened in a variety of ways in C#, and 8.0 will have some improvements on that front too, we still need to copy the class name when we declare a constructor. This heritage from C++ do not add any value to code readability or verbosity. The only thing it does is allowing the compiler to issue an error if the constructor is not of the right name. But the compiler do know we are talking about a constructor! Therefore, we can get rid of this syntax and allow a more simple way of declaring constructors and destructors (to a lesser extent, but they do exist in C#). Moreso, Python and other languages already understands that since years ago.
+
+## Detailed design
+[design]: #detailed-design
+
+Introduce two keywords : constr and destr that are to be used when declaring constructors and destructors.
+
+For example, a constructor declaration like this:
+
+public class SomeClassName {
+      public SomeClassName() {
+      }
+}
+
+Would become
+
+public class SomeClassName {
+     public constr() {
+     }
+}
+
+## Drawbacks
+[drawbacks]: #drawbacks
+
+Why should we *not* do this?
+
+## Alternatives
+[alternatives]: #alternatives
+
+What other designs have been considered? What is the impact of not doing this?
+
+## Unresolved questions
+[unresolved]: #unresolved-questions
+
+What parts of the design are still undecided?
+
+## Design meetings
+
+Link to design notes that affect this proposal, and describe in one sentence for each what changes they led to.
